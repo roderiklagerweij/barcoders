@@ -74,7 +74,7 @@ public class ResultActivity extends AppCompatActivity {
         ObjectAnimator fadeIn = ObjectAnimator.ofFloat(view, "alpha", .3f, 1f);
         fadeIn.setDuration(2000);
 
-        ValueAnimator scaleUp = ValueAnimator.ofFloat(1,(float)2);
+        ValueAnimator scaleUp = ValueAnimator.ofFloat((float)0.5,(float)1);
         scaleUp.setDuration(800);
         scaleUp.setInterpolator(new BounceInterpolator());
         scaleUp.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
