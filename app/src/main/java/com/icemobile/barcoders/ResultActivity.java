@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
+import com.icemobile.barcoders.data.domain.Sentence;
+
 public class ResultActivity extends AppCompatActivity {
 
     private TextView line1;
@@ -24,6 +26,8 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+//        List<Sentence> sentences = getE
+        
         line1 = (TextView) findViewById(R.id.line1);
         line2 = (TextView) findViewById(R.id.line2);
         line3 = (TextView) findViewById(R.id.line3);
