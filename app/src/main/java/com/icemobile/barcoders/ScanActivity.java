@@ -61,7 +61,7 @@ public class ScanActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO next
+                getSentences();
             }
         });
     }
@@ -98,5 +98,14 @@ public class ScanActivity extends AppCompatActivity {
         }
     }
 
+
+    private void getSentences() {
+        String p1 = product1.getText().toString();
+        String p2 = product2.getText().toString();
+        String p3 = product3.getText().toString();
+        String p4 = product4.getText().toString();
+
+
+    }
 
 }
