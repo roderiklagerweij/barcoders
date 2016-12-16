@@ -1,11 +1,14 @@
 package com.icemobile.barcoders;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.zxing.Result;
@@ -23,13 +26,17 @@ public class ScanActivity extends AppCompatActivity {
     private List<String> barcodes = new ArrayList<>();
     private TextView scanStatus;
 
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_scan);
         scanStatus = (TextView) findViewById(R.id.scan_status);
+        ObjectAnimator popupAnimX = ObjectAnimator.ofFloat(scanStatus, View.SCALE_X, 1f, 1.3f, 1f);
+        ObjectAnimator popupAnimY = ObjectAnimator.ofFloat(scanStatus, View.SCALE_Y, 1f, 1.3f, 1f);
+        final AnimatorSet set = new AnimatorSet();
+        set.playTogether(popupAnimX, popupAnimY);
 
-//        Toast.makeText(this, "Please scan three products", Toast.LENGTH_LONG).show();
         final ZXingFragment xf = (ZXingFragment) getSupportFragmentManager().findFragmentById(R.id.scanner);
         xf.setDecodeCallback(new DecodeCallback(){
 
@@ -39,9 +46,11 @@ public class ScanActivity extends AppCompatActivity {
                 barcodes.add(result.getText());
                 xf.restartScanningIn(3000);
                 if (barcodes.size() == 1) {
-                    scanStatus.setText("Please scan two more products");
+                    scanStatus.setText("1 / 3");
+                    set.start();
                 } else if (barcodes.size() == 2) {
-                    scanStatus.setText("Please scan one more product");
+                    scanStatus.setText("2 / 3");
+                    set.start();
                 } else if (barcodes.size() == 3) {
                     analyze();
                 }
