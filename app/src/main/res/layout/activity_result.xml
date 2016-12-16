@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.icemobile.barcoders.ResultActivity">
+    tools:context="com.icemobile.barcoders.ResultActivity"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,8 +25,8 @@
             android:layout_marginTop="32dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Result!"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:textColor="#FFFFFF"/>
 
         <TextView
             android:id="@+id/line2"
@@ -35,8 +36,8 @@
             android:layout_marginTop="32dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Result!"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:textColor="#FFFFFF"/>
 
         <TextView
             android:id="@+id/line3"
@@ -46,8 +47,8 @@
             android:layout_marginTop="32dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Result!"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:textColor="#FFFFFF"/>
 
         <TextView
             android:id="@+id/line4"
@@ -57,7 +58,7 @@
             android:layout_marginTop="32dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Result!"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
 </FrameLayout>

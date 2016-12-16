@@ -1,7 +1,5 @@
 package com.icemobile.barcoders;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -37,12 +35,39 @@ public class ResultActivity extends AppCompatActivity {
         line4.setText("Some text 4");
 
         mp = MediaPlayer.create(this, R.raw.animals023);
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+            }
+        });
 
         animate(line1, 1);
     }
 
     private void animate(final View view, final int position){
+        mp = MediaPlayer.create(this, R.raw.animals023);
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                switch (position) {
+                    case 1:
+                        animate(line2, 2);
+                        break;
+                    case 2:
+                        animate(line3, 3);
+                        break;
+                    case 3:
+                        animate(line4, 4);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
         mp.start();
+
+
         view.setVisibility(View.VISIBLE);
         AnimatorSet set = new AnimatorSet();
 
@@ -63,25 +88,6 @@ public class ResultActivity extends AppCompatActivity {
 
 
         set.play(scaleUp).with(fadeIn);
-        set.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                switch (position) {
-                    case 1:
-                        animate(line2, 2);
-                        break;
-                    case 2:
-                        animate(line3, 3);
-                        break;
-                    case 3:
-                        animate(line4, 4);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
         set.start();
     }
 }

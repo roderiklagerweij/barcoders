@@ -25,6 +25,8 @@ public class ScanActivity extends AppCompatActivity {
         super.onCreate(icicle);
         setContentView(R.layout.activity_scan);
 
+        startActivity(new Intent(this, ResultActivity.class));
+
         Toast.makeText(this, "Please scan your first product", Toast.LENGTH_LONG).show();
         final ZXingFragment xf = (ZXingFragment) getSupportFragmentManager().findFragmentById(R.id.scanner);
         xf.setDecodeCallback(new DecodeCallback(){
