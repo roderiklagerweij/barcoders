@@ -1,5 +1,6 @@
 package com.icemobile.barcoders;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,9 @@ public class ScanActivity extends AppCompatActivity {
         for (Sentence s : sentences) {
             Log.d("Test", s.getText());
         }
+
+        Intent intent = new Intent(this, ResultActivity.class);
+        startActivity(intent);
     }
 
 }
