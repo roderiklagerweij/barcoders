@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.icemobile.barcoders.data.domain.Category;
 import com.icemobile.barcoders.data.domain.PoeticWrapper;
 import com.icemobile.barcoders.data.domain.Product;
+import com.icemobile.barcoders.data.domain.Sentence;
 import com.icemobile.barcoders.data.domain.SentenceType;
 import com.icemobile.barcoders.data.manager.CategoryMapper;
 
@@ -51,7 +52,7 @@ public class CategoryMapperImpl implements CategoryMapper {
     }
 
     @Override
-    public List<String> getSentences(List<String> barcodes) {
+    public List<Sentence> getSentences(List<String> barcodes) {
         if(barcodes == null || barcodes.size() < 3) {
             return new ArrayList<>();
         }
@@ -83,9 +84,9 @@ public class CategoryMapperImpl implements CategoryMapper {
         poetics.add(new PoeticWrapper(products.get(1), ADVICE));
         poetics.add(new PoeticWrapper(products.get(2), FUTURE));
 
-        List<String> sentences = new ArrayList<>();
+        List<Sentence> sentences = new ArrayList<>();
         for(PoeticWrapper poeticWrapper : poetics) {
-            sentences.add(getSentence(poeticWrapper));
+            sentences.add(new Sentence(getSentence(poeticWrapper), getAudioFilename(poeticWrapper)));
         }
 
         return sentences;
@@ -189,6 +190,14 @@ public class CategoryMapperImpl implements CategoryMapper {
                 }
             default:
                 return "ERROR: no sentence type found";
+        }
+    }
+
+    private String getAudioFilename(PoeticWrapper poeticWrapper) {
+        if(poeticWrapper.getSentenceType() == SentenceType.GROUP) {
+            return poeticWrapper.getPoetic().getId();
+        } else {
+            return poeticWrapper.getPoetic().getId() + (poeticWrapper.getSentenceType().ordinal() + 1);
         }
     }
 

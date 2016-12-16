@@ -19,17 +19,23 @@
         android:padding="30dp"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:hint="Your name"/>
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:text="Foodure Telling" />
 
         <Button
             android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text='Next'/>
+            android:background="#746BF5"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:text='Start scanning'/>
 
     </LinearLayout>
 

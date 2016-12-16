@@ -1,6 +1,5 @@
 package com.icemobile.barcoders;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +8,7 @@ import android.widget.Toast;
 
 import com.google.zxing.Result;
 import com.icemobile.barcoders.data.Classwiring;
+import com.icemobile.barcoders.data.domain.Sentence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +25,7 @@ public class ScanActivity extends AppCompatActivity {
         super.onCreate(icicle);
         setContentView(R.layout.activity_scan);
 
-        startActivity(new Intent(this, ResultActivity.class));
-
-        Toast.makeText(this, "Please scan your first product", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Please scan three products", Toast.LENGTH_LONG).show();
         final ZXingFragment xf = (ZXingFragment) getSupportFragmentManager().findFragmentById(R.id.scanner);
         xf.setDecodeCallback(new DecodeCallback(){
 
@@ -44,38 +42,11 @@ public class ScanActivity extends AppCompatActivity {
 
     }
 
-//    private void scanCode() {
-////        new IntentIntegrator(ScanActivity.this).initiateScan();
-//        overridePendingTransition(0, 0);
-//    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-//        if(result != null) {
-//            if(result.getContents() == null) {
-//                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-//            } else {
-//                barcodes.add(result.getContents());
-//                if (barcodes.size() == 1) {
-//                    Toast.makeText(this, "Please scan your second product", Toast.LENGTH_LONG).show();
-//                    scanCode();
-//                } else if (barcodes.size() == 2) {
-//                    Toast.makeText(this, "Please scan your third and final product", Toast.LENGTH_LONG).show();
-//                    scanCode();
-//                } else if (barcodes.size() == 3){
-//                    analyze();
-//                }
-//            }
-//        } else {
-//            super.onActivityResult(requestCode, resultCode, data);
-//        }
-    }
 
     private void analyze() {
-        List<String> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
-        for (String s : sentences) {
-            Log.d("Test", s);
+        List<Sentence> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
+        for (Sentence s : sentences) {
+            Log.d("Test", s.getText());
         }
     }
 
