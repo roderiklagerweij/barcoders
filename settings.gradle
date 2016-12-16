@@ -1,2 +1,2 @@
 include ':app'
-include ':libraries:zxing-lib-extended'
+include ':libraries/zxing-lib-extended'
