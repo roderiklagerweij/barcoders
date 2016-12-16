@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.google.zxing.Result;
 import com.icemobile.barcoders.data.Classwiring;
+import com.icemobile.barcoders.data.domain.Sentence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,9 +72,9 @@ public class ScanActivity extends AppCompatActivity {
     }
 
     private void analyze() {
-        List<String> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
-        for (String s : sentences) {
-            Log.d("Test", s);
+        List<Sentece> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
+        for (Sentence s : sentences) {
+            Log.d("Test", s.getText());
         }
     }
 

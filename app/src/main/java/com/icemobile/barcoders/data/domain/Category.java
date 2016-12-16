@@ -1,22 +1,22 @@
 package com.icemobile.barcoders.data.domain;
 
 public enum Category implements Poetic {
-    SPICE(1),
-    MORNING(2),
-    SUGAR(3),
-    DRINKS(4),
-    ENJOY(5),
-    SAVORY(6),
-    CREAMY(7);
+    SPICE("a"),
+    MORNING("b"),
+    SUGAR("c"),
+    DRINKS("d"),
+    ENJOY("e"),
+    SAVORY("f"),
+    CREAMY("g");
 
-    private int id;
+    private String id;
 
-    Category(int id) {
+    Category(String id) {
         this.id = id;
     }
 
     @Override
-    public int getId() {
+    public String getId() {
         return id;
     }
 
