@@ -1,7 +1,6 @@
 package com.icemobile.barcoders;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,20 +12,22 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.icemobile.barcoders.data.Classwiring;
-import com.icemobile.barcoders.data.domain.PoeticWrapper;
 import com.icemobile.barcoders.data.domain.Product;
 import com.icemobile.barcoders.data.manager.CategoryMapper;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ScanActivity extends AppCompatActivity {
 
     private int index = -1;
-    private TextView product1;
-    private TextView product2;
-    private TextView product3;
+    private TextView product1TextView;
+    private TextView product2TextView;
+    private TextView product3TextView;
     private Button next;
+    private Product product1;
+    private Product product2;
+    private Product product3;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -54,13 +55,13 @@ public class ScanActivity extends AppCompatActivity {
             }
         };
 
-        product1 = (TextView) findViewById(R.id.product1);
-        product2 = (TextView) findViewById(R.id.product2);
-        product3 = (TextView) findViewById(R.id.product3);
+        product1TextView = (TextView) findViewById(R.id.product1);
+        product2TextView = (TextView) findViewById(R.id.product2);
+        product3TextView = (TextView) findViewById(R.id.product3);
         next = (Button) findViewById(R.id.next);
-        product1.setOnClickListener(scanListener);
-        product2.setOnClickListener(scanListener);
-        product3.setOnClickListener(scanListener);
+        product1TextView.setOnClickListener(scanListener);
+        product2TextView.setOnClickListener(scanListener);
+        product3TextView.setOnClickListener(scanListener);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +69,7 @@ public class ScanActivity extends AppCompatActivity {
                 getSentences();
             }
         });
+        setNextButton();
     }
 
     @Override
@@ -77,22 +79,22 @@ public class ScanActivity extends AppCompatActivity {
             if(result.getContents() == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-                // TODO: get correct product
-                String product = "Milk";
-
                 switch (index) {
                     case 1:
-                        product1.setText(product);
+                        product1 = Classwiring.getCategoryMapper().getProduct(result.getContents());
+                        product1TextView.setText(product1.getBarcode());
                         break;
                     case 2:
-                        product2.setText(product);
+                        product2 = Classwiring.getCategoryMapper().getProduct(result.getContents());
+                        product2TextView.setText(product2.getBarcode());
                         break;
                     case 3:
-                        product3.setText(product);
+                        product3 = Classwiring.getCategoryMapper().getProduct(result.getContents());
+                        product3TextView.setText(product2.getBarcode());
                         break;
                 }
-
-                Toast.makeText(this, "Scanned: " + result.getContents() + " " + index, Toast.LENGTH_LONG).show();
+                setNextButton();
+//                Toast.makeText(this, "Scanned: " + result.getContents() + " " + index, Toast.LENGTH_LONG).show();
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -102,18 +104,13 @@ public class ScanActivity extends AppCompatActivity {
 
     private void getSentences() {
         CategoryMapper categoryMapper = Classwiring.getCategoryMapper();
-        Product p1 = categoryMapper.getProduct(product1.getText().toString());
-        Product p2 = categoryMapper.getProduct(product2.getText().toString());
-        Product p3 = categoryMapper.getProduct(product3.getText().toString());
-
-        List<PoeticWrapper> poetics = categoryMapper.getPoetic(p1, p2, p3);
-
-        List<String> sentences = new ArrayList<>();
-        for (PoeticWrapper poeticWrapper : poetics) {
-            sentences.add(categoryMapper.getSentence(poeticWrapper.getPoetic(), poeticWrapper.getSentenceType()));
-        }
+        List<String> sentences = categoryMapper.getSentences(Arrays.asList(product1, product2, product3));
 
         // start final activity with sentences
+    }
+
+    private void setNextButton() {
+        next.setEnabled(product1 != null && product2 != null && product3 != null);
     }
 
 }
