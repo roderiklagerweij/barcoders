@@ -10,6 +10,7 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.Result;
 import com.icemobile.barcoders.data.Classwiring;
@@ -49,9 +50,11 @@ public class ScanActivity extends AppCompatActivity {
                 if (barcodes.size() == 1) {
                     scanStatus.setText("1 / 3");
                     set.start();
+                    Toast.makeText(ScanActivity.this, getString(R.string.scan_success), Toast.LENGTH_SHORT).show();
                 } else if (barcodes.size() == 2) {
                     scanStatus.setText("2 / 3");
                     set.start();
+                    Toast.makeText(ScanActivity.this, getString(R.string.scan_success), Toast.LENGTH_SHORT).show();
                 } else if (barcodes.size() == 3) {
                     analyze();
                 }

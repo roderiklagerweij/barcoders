@@ -18,7 +18,8 @@
 
         </activity>
 
-        <activity android:name=".ScanActivity" android:screenOrientation="portrait">
+        <activity android:name=".ScanActivity" android:screenOrientation="portrait"
+                  android:noHistory="true">
         </activity>
 
         <activity android:name=".AnalyzeActivity" android:screenOrientation="portrait"/>
