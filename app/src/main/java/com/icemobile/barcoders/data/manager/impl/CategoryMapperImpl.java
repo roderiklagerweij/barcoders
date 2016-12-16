@@ -12,6 +12,7 @@ import com.icemobile.barcoders.data.manager.CategoryMapper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static com.icemobile.barcoders.data.domain.SentenceType.ADVICE;
 import static com.icemobile.barcoders.data.domain.SentenceType.FUTURE;
@@ -58,7 +59,12 @@ public class CategoryMapperImpl implements CategoryMapper {
         }
         List<Product> products = new ArrayList<>();
         for(String barcode : barcodes) {
-            products.add(getProduct(barcode));
+            Product product = getProduct(barcode);
+            if(product == null) {
+                // haha product not found, I will add a random one for you ;-)
+                product = Product.values()[new Random().nextInt(Product.values().length)];
+            }
+            products.add(product);
         }
 
         Category preferredCategory = null;
