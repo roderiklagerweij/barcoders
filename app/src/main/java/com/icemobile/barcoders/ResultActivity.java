@@ -6,11 +6,14 @@ import android.animation.ValueAnimator;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
 
 import com.icemobile.barcoders.data.domain.Sentence;
+
+import java.util.List;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -26,8 +29,11 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-//        List<Sentence> sentences = getE
-        
+        List<Sentence> sentences = getIntent().getParcelableArrayListExtra("sentences");
+        for (Sentence s : sentences) {
+            Log.d("Test", s.getText());
+        }
+
         line1 = (TextView) findViewById(R.id.line1);
         line2 = (TextView) findViewById(R.id.line2);
         line3 = (TextView) findViewById(R.id.line3);
@@ -38,7 +44,7 @@ public class ResultActivity extends AppCompatActivity {
         line3.setText("Some text 3");
         line4.setText("Some text 4");
 
-        mp = MediaPlayer.create(this, R.raw.animals023);
+//        mp = MediaPlayer.create(this, R.raw.animals023);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
@@ -50,7 +56,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     private void animate(final View view, final int position){
-        mp = MediaPlayer.create(this, R.raw.animals023);
+//        mp = MediaPlayer.create(this, R.raw.animals023);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {

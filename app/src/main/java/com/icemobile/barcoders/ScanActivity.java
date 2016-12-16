@@ -53,9 +53,6 @@ public class ScanActivity extends AppCompatActivity {
 
     private void analyze() {
         List<Sentence> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
-        for (Sentence s : sentences) {
-            Log.d("Test", s.getText());
-        }
 
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putParcelableArrayListExtra("sentences", (ArrayList<? extends Parcelable>) sentences);
