@@ -12,37 +12,37 @@
     android:orientation="vertical"
     tools:context="com.icemobile.barcoders.ScanActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Please scan 4 products"
-        android:layout_marginBottom="10dp" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Please scan 4 products"-->
+        <!--android:layout_marginBottom="10dp" />-->
 
-    <TextView
-        android:id="@+id/product1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Scan your product" />
+    <!--<TextView-->
+        <!--android:id="@+id/product1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:text="Scan your product" />-->
 
-    <TextView
-        android:id="@+id/product2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Scan your product"/>
+    <!--<TextView-->
+        <!--android:id="@+id/product2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:text="Scan your product"/>-->
 
-    <TextView
-        android:id="@+id/product3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:text="Scan your product"/>
+    <!--<TextView-->
+        <!--android:id="@+id/product3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:text="Scan your product"/>-->
 
-    <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next" />
+    <!--<Button-->
+        <!--android:id="@+id/next"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Next" />-->
 
 </LinearLayout>
