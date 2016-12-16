@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +18,8 @@ public class ResultActivity extends AppCompatActivity {
     private TextView line2;
     private TextView line3;
     private TextView line4;
+
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +36,13 @@ public class ResultActivity extends AppCompatActivity {
         line3.setText("Some text 3");
         line4.setText("Some text 4");
 
+        mp = MediaPlayer.create(this, R.raw.animals023);
+
         animate(line1, 1);
     }
 
     private void animate(final View view, final int position){
+        mp.start();
         view.setVisibility(View.VISIBLE);
         AnimatorSet set = new AnimatorSet();
 
