@@ -22,7 +22,8 @@
                   android:noHistory="true">
         </activity>
 
-        <activity android:name=".AnalyzeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AnalyzeActivity" android:screenOrientation="portrait"
+                  android:noHistory="true"/>
         <activity android:name=".ResultActivity" android:screenOrientation="portrait"/>
 
     </application>
