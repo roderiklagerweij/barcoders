@@ -14,14 +14,14 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan);
+        setContentView(R.layout.activity_welcome);
 
         View next = findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent());
+                startActivity(new Intent(WelcomeActivity.this, ScanActivity.class));
             }
         });
 
