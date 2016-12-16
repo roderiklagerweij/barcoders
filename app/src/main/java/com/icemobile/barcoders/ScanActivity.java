@@ -3,10 +3,10 @@ package com.icemobile.barcoders;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.zxing.Result;
 import com.icemobile.barcoders.data.Classwiring;
@@ -58,6 +58,7 @@ public class ScanActivity extends AppCompatActivity {
         }
 
         Intent intent = new Intent(this, ResultActivity.class);
+        intent.putParcelableArrayListExtra("sentences", (ArrayList<? extends Parcelable>) sentences);
         startActivity(intent);
     }
 
