@@ -12,6 +12,13 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.icemobile.barcoders.data.Classwiring;
+import com.icemobile.barcoders.data.domain.PoeticWrapper;
+import com.icemobile.barcoders.data.domain.Product;
+import com.icemobile.barcoders.data.manager.CategoryMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ScanActivity extends AppCompatActivity {
 
@@ -19,7 +26,6 @@ public class ScanActivity extends AppCompatActivity {
     private TextView product1;
     private TextView product2;
     private TextView product3;
-    private TextView product4;
     private Button next;
 
     @Override
@@ -42,9 +48,6 @@ public class ScanActivity extends AppCompatActivity {
                     case R.id.product3:
                         index = 3;
                         break;
-                    case R.id.product4:
-                        index = 4;
-                        break;
                 }
                 Log.d("Test", ": " + index);
                 new IntentIntegrator(ScanActivity.this).initiateScan();
@@ -54,17 +57,15 @@ public class ScanActivity extends AppCompatActivity {
         product1 = (TextView) findViewById(R.id.product1);
         product2 = (TextView) findViewById(R.id.product2);
         product3 = (TextView) findViewById(R.id.product3);
-        product4 = (TextView) findViewById(R.id.product4);
         next = (Button) findViewById(R.id.next);
         product1.setOnClickListener(scanListener);
         product2.setOnClickListener(scanListener);
         product3.setOnClickListener(scanListener);
-        product4.setOnClickListener(scanListener);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO next
+                getSentences();
             }
         });
     }
@@ -89,9 +90,6 @@ public class ScanActivity extends AppCompatActivity {
                     case 3:
                         product3.setText(product);
                         break;
-                    case 4:
-                        product4.setText(product);
-                        break;
                 }
 
                 Toast.makeText(this, "Scanned: " + result.getContents() + " " + index, Toast.LENGTH_LONG).show();
@@ -101,5 +99,21 @@ public class ScanActivity extends AppCompatActivity {
         }
     }
 
+
+    private void getSentences() {
+        CategoryMapper categoryMapper = Classwiring.getCategoryMapper();
+        Product p1 = categoryMapper.getProduct(product1.getText().toString());
+        Product p2 = categoryMapper.getProduct(product2.getText().toString());
+        Product p3 = categoryMapper.getProduct(product3.getText().toString());
+
+        List<PoeticWrapper> poetics = categoryMapper.getPoetic(p1, p2, p3);
+
+        List<String> sentences = new ArrayList<>();
+        for (PoeticWrapper poeticWrapper : poetics) {
+            sentences.add(categoryMapper.getSentence(poeticWrapper.getPoetic(), poeticWrapper.getSentenceType()));
+        }
+
+        // start final activity with sentences
+    }
 
 }
