@@ -48,5 +48,16 @@
             android:gravity="center"
             android:text="Result!"
             android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/line4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Result!"
+            android:visibility="invisible"/>
     </LinearLayout>
 </FrameLayout>
