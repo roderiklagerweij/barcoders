@@ -160,7 +160,7 @@ public class CategoryMapperImpl implements CategoryMapper {
                     case MUSTARD:
                         return "Then, people will see what your worth";
                     case NOODLES:
-                        return "Then, you will a source of inspiration";
+                        return "Then, you will be a source of inspiration";
                     case PEPPER:
                         return "Then, you can adapt to every change";
                     case COFFEE:
