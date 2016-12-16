@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
@@ -30,8 +31,9 @@ public class ScanActivity extends AppCompatActivity {
 
             @Override
             public void handleBarcode(Result result, Bitmap arg1, float arg2) {
+                Log.d("Test", "result: "  + result.getText());
                 barcodes.add(result.getText());
-                xf.restartScanningIn(200);
+                xf.restartScanningIn(3000);
                 if (barcodes.size() == 3) {
                     analyze();
                 }
@@ -70,6 +72,9 @@ public class ScanActivity extends AppCompatActivity {
 
     private void analyze() {
         List<String> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
+        for (String s : sentences) {
+            Log.d("Test", s);
+        }
     }
 
 }
