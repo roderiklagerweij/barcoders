@@ -6,7 +6,6 @@ import android.animation.ValueAnimator;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.widget.TextView;
@@ -23,52 +22,43 @@ public class ResultActivity extends AppCompatActivity {
     private TextView line4;
 
     private MediaPlayer mp;
+    private List<Sentence> sentences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        List<Sentence> sentences = getIntent().getParcelableArrayListExtra("sentences");
-        for (Sentence s : sentences) {
-            Log.d("Test", s.getText());
-        }
+        sentences = getIntent().getParcelableArrayListExtra("sentences");
 
         line1 = (TextView) findViewById(R.id.line1);
         line2 = (TextView) findViewById(R.id.line2);
         line3 = (TextView) findViewById(R.id.line3);
         line4 = (TextView) findViewById(R.id.line4);
 
-        line1.setText("Some text 1");
-        line2.setText("Some text 2");
-        line3.setText("Some text 3");
-        line4.setText("Some text 4");
+        line1.setText(sentences.get(0).getText());
+        line2.setText(sentences.get(1).getText());
+        line3.setText(sentences.get(2).getText());
+        line4.setText(sentences.get(3).getText());
 
-//        mp = MediaPlayer.create(this, R.raw.animals023);
-        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
 
-            }
-        });
-
-        animate(line1, 1);
+        animate(line1, 0);
     }
 
     private void animate(final View view, final int position){
-//        mp = MediaPlayer.create(this, R.raw.animals023);
+        mp = MediaPlayer.create(this, getResources().getIdentifier(sentences.get(position).getAudioFilename(), "raw", getPackageName()));
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
                 switch (position) {
+                    case 0:
+                        animate(line2, 1);
+                        break;
                     case 1:
-                        animate(line2, 2);
+                        animate(line3, 2);
                         break;
                     case 2:
-                        animate(line3, 3);
-                        break;
-                    case 3:
-                        animate(line4, 4);
+                        animate(line4, 3);
                         break;
                     default:
                         break;
