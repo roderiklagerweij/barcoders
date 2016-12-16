@@ -8,45 +8,19 @@
     android:orientation="vertical"
     tools:context="com.icemobile.barcoders.ScanActivity">
 
+    <TextView
+        android:id="@+id/scan_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:gravity="center_horizontal"
+        android:background="#746BF5"
+        android:text="Please scan three products"
+        android:padding="10dp"/>
 
     <fragment class="zxing.library.ZXingFragment"
               android:id="@+id/scanner"
               android:layout_width="match_parent" android:layout_height="match_parent" />
-
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Please scan 4 products"-->
-        <!--android:layout_marginBottom="10dp" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/product1"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:text="Scan your product" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/product2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:text="Scan your product"/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/product3"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:text="Scan your product"/>-->
-
-    <!--<Button-->
-        <!--android:id="@+id/next"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Next" />-->
-
-
 
 </LinearLayout>
