@@ -1,6 +1,5 @@
 package com.icemobile.barcoders;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +24,7 @@ public class ScanActivity extends AppCompatActivity {
         super.onCreate(icicle);
         setContentView(R.layout.activity_scan);
 
-        Toast.makeText(this, "Please scan your first product", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Please scan three products", Toast.LENGTH_LONG).show();
         final ZXingFragment xf = (ZXingFragment) getSupportFragmentManager().findFragmentById(R.id.scanner);
         xf.setDecodeCallback(new DecodeCallback(){
 
