@@ -195,9 +195,9 @@ public class CategoryMapperImpl implements CategoryMapper {
 
     private String getAudioFilename(PoeticWrapper poeticWrapper) {
         if(poeticWrapper.getSentenceType() == SentenceType.GROUP) {
-            return poeticWrapper.getPoetic().getId();
+            return "audio_" + poeticWrapper.getPoetic().getId() + ".wav";
         } else {
-            return poeticWrapper.getPoetic().getId() + (poeticWrapper.getSentenceType().ordinal() + 1);
+            return "audio_" + poeticWrapper.getPoetic().getId() + (poeticWrapper.getSentenceType().ordinal() + 1) + ".wav";
         }
     }
 
