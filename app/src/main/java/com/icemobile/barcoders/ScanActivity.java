@@ -44,7 +44,7 @@ public class ScanActivity extends AppCompatActivity {
 
 
     private void analyze() {
-        List<Sentece> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
+        List<Sentence> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
         for (Sentence s : sentences) {
             Log.d("Test", s.getText());
         }
