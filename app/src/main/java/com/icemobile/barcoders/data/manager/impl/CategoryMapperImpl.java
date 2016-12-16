@@ -116,7 +116,7 @@ public class CategoryMapperImpl implements CategoryMapper {
                     case COFFEE:
                         return "and you give a smile to every day";
                     default:
-                        return "ERROR: no category found";
+                        return "ERROR: no product found for analyze";
                 }
             case ADVICE:
                 switch ((Product)poeticWrapper.getPoetic()) {
@@ -141,7 +141,7 @@ public class CategoryMapperImpl implements CategoryMapper {
                     case COFFEE:
                         return "So, try not to run out";
                     default:
-                        return "ERROR: no category found";
+                        return "ERROR: no product found for advice";
                 }
             case FUTURE:
                 switch ((Product)poeticWrapper.getPoetic()) {
@@ -166,7 +166,7 @@ public class CategoryMapperImpl implements CategoryMapper {
                     case COFFEE:
                         return "Then, people will always find you when they need you";
                     default:
-                        return "ERROR: no category found";
+                        return "ERROR: no product found for future";
                 }
             case GROUP:
                 switch ((Category)poeticWrapper.getPoetic()) {
