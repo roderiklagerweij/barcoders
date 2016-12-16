@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".WelcomeActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -17,8 +17,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ScanActivity">
-        </activity>
+        <activity android:name=".ScanActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AnalyzeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ResultActivity" android:screenOrientation="portrait"/>
 
     </application>
 
