@@ -29,6 +29,9 @@
             android:id="@+id/next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#746BF5"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
             android:text='Next'/>
 
     </LinearLayout>

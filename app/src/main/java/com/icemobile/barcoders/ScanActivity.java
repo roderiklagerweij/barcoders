@@ -42,33 +42,6 @@ public class ScanActivity extends AppCompatActivity {
 
     }
 
-//    private void scanCode() {
-////        new IntentIntegrator(ScanActivity.this).initiateScan();
-//        overridePendingTransition(0, 0);
-//    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-//        if(result != null) {
-//            if(result.getContents() == null) {
-//                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-//            } else {
-//                barcodes.add(result.getContents());
-//                if (barcodes.size() == 1) {
-//                    Toast.makeText(this, "Please scan your second product", Toast.LENGTH_LONG).show();
-//                    scanCode();
-//                } else if (barcodes.size() == 2) {
-//                    Toast.makeText(this, "Please scan your third and final product", Toast.LENGTH_LONG).show();
-//                    scanCode();
-//                } else if (barcodes.size() == 3){
-//                    analyze();
-//                }
-//            }
-//        } else {
-//            super.onActivityResult(requestCode, resultCode, data);
-//        }
-    }
 
     private void analyze() {
         List<String> sentences = Classwiring.getCategoryMapper().getSentences(barcodes);
