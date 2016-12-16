@@ -4,10 +4,10 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,7 +25,7 @@ public class ScanActivity extends AppCompatActivity {
 
     private List<String> barcodes = new ArrayList<>();
     private TextView scanStatus;
-
+    private MediaPlayer mp;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -42,7 +42,8 @@ public class ScanActivity extends AppCompatActivity {
 
             @Override
             public void handleBarcode(Result result, Bitmap arg1, float arg2) {
-                Log.d("Test", "result: "  + result.getText());
+                mp = MediaPlayer.create(ScanActivity.this, getResources().getIdentifier("beep", "raw", getPackageName()));
+                mp.start();
                 barcodes.add(result.getText());
                 xf.restartScanningIn(3000);
                 if (barcodes.size() == 1) {
